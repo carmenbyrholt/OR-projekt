@@ -42,20 +42,20 @@ problem += f31 <= h31, 'capacity constraint 1'
 problem += f32 <= h32, 'capacity constraint 1'
 
 
-problem +=  h11 = h01+l11-f01, 'capacity constraint 2'
-problem +=  h12 = h02+l12-f02, 'capacity constraint 2'
-problem +=  h21 = h11+l21-f11, 'capacity constraint 2'
-problem +=  h22 = h12+l22-f12, 'capacity constraint 2'
-problem +=  h31 = h21+l31-f21, 'capacity constraint 2'
-problem +=  h32 = h22+l32-f22, 'capacity constraint 2'
+problem +=  h11 == h01+l11-f01, 'capacity constraint 2'
+problem +=  h12 == h02+l12-f02, 'capacity constraint 2'
+problem +=  h21 == h11+l21-f11, 'capacity constraint 2'
+problem +=  h22 == h12+l22-f12, 'capacity constraint 2'
+problem +=  h31 == h21+l31-f21, 'capacity constraint 2'
+problem +=  h32 == h22+l32-f22, 'capacity constraint 2'
 
-problem +=  h01 = h31+l01-f31, 'capacity constraint 3'
-problem +=  h02 = h32+l02-f32, 'capacity constraint 3'
+problem +=  h01 == h31+l01-f31, 'capacity constraint 3'
+problem +=  h02 == h32+l02-f32, 'capacity constraint 3'
 
-problem +=  f01+f02 = F0, 'capacity constraint 6'
-problem +=  f11+f12 = F1, 'capacity constraint 6'
-problem +=  f21+f22 = F2, 'capacity constraint 6'
-problem +=  f31+f32 = F3, 'capacity constraint 6'
+problem +=  f01+f02 == F0, 'capacity constraint 6'
+problem +=  f11+f12 == F1, 'capacity constraint 6'
+problem +=  f21+f22 == F2, 'capacity constraint 6'
+problem +=  f31+f32 == F3, 'capacity constraint 6'
 
 R0=1000
 R1>=1200
