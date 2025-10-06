@@ -42,7 +42,6 @@ problem += f31 <= h31, 'capacity constraint 1'
 problem += f32 <= h32, 'capacity constraint 1'
 
 
-
 problem +=  h11 = h01+l11-f01, 'capacity constraint 2'
 problem +=  h12 = h02+l12-f02, 'capacity constraint 2'
 problem +=  h21 = h11+l21-f11, 'capacity constraint 2'
@@ -69,8 +68,7 @@ problem +=  h21+h22 => R3+F2, 'capacity constraint 4'
 
 problem +=  h31+h32 => R0+F3, 'capacity constraint 5'
 
-
-
+print("omkostning: ", value(problem.objective))
 
 
 
