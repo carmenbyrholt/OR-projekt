@@ -30,10 +30,27 @@ h32 = LpVariable('Mængden af brændstof i tank 2 ved afgang fra havn 3', lowBou
 
 #Objective Function
 problem += 600*(l01+l02)+900*(l11+l12)+1100*(l21+l22)+1200*(l31+l32), 'Objective Function'
+
 #Constraints
-problem += f_is <= h_is(i), 'capacity constraint 1'
-problem +=  h_is(i) = h_is(i-1)+l_is(i)-(f_is-1), 'capacity constraint 2'
-problem +=  h_is(0) = h_is(3)+l_is(0)-(f_is==3) , 'capacity constraint 3'
+problem += f01 <= h01, 'capacity constraint 1'
+problem += f02 <= h02, 'capacity constraint 1'
+problem += f11 <= h11, 'capacity constraint 1'
+problem += f12 <= h12, 'capacity constraint 1'
+problem += f21 <= h21, 'capacity constraint 1'
+problem += f22 <= h22, 'capacity constraint 1'
+problem += f31 <= h31, 'capacity constraint 1'
+problem += f32 <= h32, 'capacity constraint 1'
+
+problem +=  h01 = h31+l01-f31, 'capacity constraint 2' # is also constraint no. 3
+problem +=  h02 = h32+l02-f32, 'capacity constraint 2'
+problem +=  h11 = h01+l11-f01, 'capacity constraint 2'
+problem +=  h12 = h02+l12-f02, 'capacity constraint 2'
+problem +=  h21 = h11+l21-f11, 'capacity constraint 2'
+problem +=  h22 = h12+l22-f12, 'capacity constraint 2'
+problem +=  h31 = h21+l31-f21, 'capacity constraint 2'
+problem +=  h32 = h22+l32-f22, 'capacity constraint 2'
+
+
 
 
 
