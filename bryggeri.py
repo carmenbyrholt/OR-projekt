@@ -1,7 +1,32 @@
 from pulp import *
 problem = LpProblem('omkostninger', LpMinimize)
-x1 = LpVariable('', lowBound=0)
-x2 = LpVariable('tank_2', lowBound=0)
+
+f01 = LpVariable('brændstofforbrug i havn 0 til 1 i tank 1', lowBound=0)
+f02 = LpVariable('brændstofforbrug i havn 0 til 1 i tank 2', lowBound=0)
+f11 = LpVariable('brændstofforbrug i havn 0 til 1 i tank 1', lowBound=0)
+f12 = LpVariable('tank_2', lowBound=0)
+f21 = LpVariable('', lowBound=0)
+f22 = LpVariable('tank_2', lowBound=0)
+f31 = LpVariable('', lowBound=0)
+f32 = LpVariable('tank_2', lowBound=0)
+
+l01 = LpVariable('', lowBound=0)
+l02 = LpVariable('tank_2', lowBound=0)
+l11 = LpVariable('', lowBound=0)
+l12 = LpVariable('tank_2', lowBound=0)
+l21 = LpVariable('', lowBound=0)
+l22 = LpVariable('tank_2', lowBound=0)
+l31 = LpVariable('', lowBound=0)
+l32 = LpVariable('tank_2', lowBound=0)
+
+h01 = LpVariable('', lowBound=0)
+h02 = LpVariable('tank_2', lowBound=0)
+h11 = LpVariable('', lowBound=0)
+h12 = LpVariable('tank_2', lowBound=0)
+h21 = LpVariable('', lowBound=0)
+h22 = LpVariable('tank_2', lowBound=0)
+h31 = LpVariable('', lowBound=0)
+h32 = LpVariable('tank_2', lowBound=0)
 
 #Objective Function
 problem += 600*x1+900*x2+1100*x3+1200*x4 , 'Objective Function'
