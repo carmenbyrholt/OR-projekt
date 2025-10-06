@@ -31,47 +31,63 @@ h32 = LpVariable('Mængden af brændstof i tank 2 ved afgang fra havn 3', lowBou
 #Objective Function
 problem += 600*(l01+l02)+900*(l11+l12)+1100*(l21+l22)+1200*(l31+l32), 'Objective Function'
 
-#Constraints
-problem += f01 <= h01, 'capacity constraint 1'
-problem += f02 <= h02, 'capacity constraint 1'
-problem += f11 <= h11, 'capacity constraint 1'
-problem += f12 <= h12, 'capacity constraint 1'
-problem += f21 <= h21, 'capacity constraint 1'
-problem += f22 <= h22, 'capacity constraint 1'
-problem += f31 <= h31, 'capacity constraint 1'
-problem += f32 <= h32, 'capacity constraint 1'
-
-
-problem +=  h11 == h01+l11-f01, 'capacity constraint 2'
-problem +=  h12 == h02+l12-f02, 'capacity constraint 2'
-problem +=  h21 == h11+l21-f11, 'capacity constraint 2'
-problem +=  h22 == h12+l22-f12, 'capacity constraint 2'
-problem +=  h31 == h21+l31-f21, 'capacity constraint 2'
-problem +=  h32 == h22+l32-f22, 'capacity constraint 2'
-
-problem +=  h01 == h31+l01-f31, 'capacity constraint 3'
-problem +=  h02 == h32+l02-f32, 'capacity constraint 3'
-
-F0 = f01+f02
-F1 = f11+f12
-F2 = f21+f22
-F3 = f31+f32
-
-problem +=  f01+f02 == F0, 'capacity constraint 6'
-problem +=  f11+f12 == F1, 'capacity constraint 6'
-problem +=  f21+f22 == F2, 'capacity constraint 6'
-problem +=  f31+f32 == F3, 'capacity constraint 6'
-
-R1 = (h11+h12)-(f11+f12) >= 1200
-R2 = (h21+h22)-(f21+f22) >= 1800
-R3 = (h31+h32)-(f31+f32) >= 2800
+#constants
+F0=700
+F1=1800
+F2=2200
+F3=2800
 
 R0=1000
+R1=1200
+R2=1800
+R3=2800
 
-problem +=  h01+h02 => R1+F0, 'capacity constraint 4'
-problem +=  h11+h12 => R2+F1, 'capacity constraint 4'
-problem +=  h21+h22 => R3+F2, 'capacity constraint 4'
+#Constraints
+problem += h01 <=3500
+problem += h02 <=3500
+problem += h11 <=3500
+problem += h12 <=3500
+problem += h21 <=3500
+problem += h22 <=3500
+problem += h31 <=3500
+problem += h32 <=3500
 
-problem +=  h31+h32 => R0+F3, 'capacity constraint 5'
+problem += f01 <= h01
+problem += f02 <= h02
+problem += f11 <= h11
+problem += f12 <= h12
+problem += f21 <= h21
+problem += f22 <= h22
+problem += f31 <= h31
+problem += f32 <= h32
 
-print("omkostning: ", value(problem.objective))
+problem +=  h01 == h31+l01-f31
+problem +=  h02 == h32+l02-f32
+problem +=  h11 == h01+l11-f01
+problem +=  h12 == h02+l12-f02
+problem +=  h21 == h11+l21-f11
+problem +=  h22 == h12+l22-f12
+problem +=  h31 == h21+l31-f21
+problem +=  h32 == h22+l32-f22
+
+
+problem +=  f01+f02 == F0
+problem +=  f11+f12 == F1
+problem +=  f21+f22 == F2
+problem +=  f31+f32 == F3
+
+problem +=  h01+h02 >= R1+F0
+problem +=  h11+h12 >= R2+F1
+problem +=  h21+h22 >= R3+F2
+problem +=  h31+h32 >= R0+F3
+
+
+problem.solve()
+print("Status:", LpStatus[problem.status])
+print("Omkostning:", value(problem.objective))
+print(value(f01),value(f02),value(f11),value(f12),value(f21),value(f22),value(f31),value(f32))
+#brændstofforbrug i havn i til havn i+1 i tank s
+print(value(l01),value(l02),value(l11),value(l12),value(l21),value(l22),value(l31),value(l32))
+#Mængden af brændstof fyldt i tank s ved havn i
+print(value(h01),value(h02),value(h11),value(h12),value(h21),value(h22),value(h31),value(h32))
+#Mængden af brændstof i tank s ved afgang fra havn i
