@@ -79,7 +79,7 @@ problem +=  f31+f32 == F3
 problem +=  h01+h02 >= R1+F0
 problem +=  h11+h12 >= R2+F1
 problem +=  h21+h22 >= R3+F2
-problem +=  h31+h32 == R0+F3
+problem +=  h31+h32 >= R0+F3
 
 
 problem.solve()
