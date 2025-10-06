@@ -1,14 +1,14 @@
 from pulp import *
-problem = LpProblem('omkostninger', LpMinimize)
+problem = LpProblem('mængde i tankene', LpMinimize)
 
 f01 = LpVariable('brændstofforbrug i havn 0 til 1 i tank 1', lowBound=0)
 f02 = LpVariable('brændstofforbrug i havn 0 til 1 i tank 2', lowBound=0)
-f11 = LpVariable('brændstofforbrug i havn 0 til 1 i tank 1', lowBound=0)
-f12 = LpVariable('tank_2', lowBound=0)
-f21 = LpVariable('', lowBound=0)
-f22 = LpVariable('tank_2', lowBound=0)
-f31 = LpVariable('', lowBound=0)
-f32 = LpVariable('tank_2', lowBound=0)
+f11 = LpVariable('brændstofforbrug i havn 1 til 2 i tank 1', lowBound=0)
+f12 = LpVariable('brændstofforbrug i havn 1 til 2 i tank 2', lowBound=0)
+f21 = LpVariable('brændstofforbrug i havn 2 til 3 i tank 1', lowBound=0)
+f22 = LpVariable('brændstofforbrug i havn 2 til 3 i tank 2', lowBound=0)
+f31 = LpVariable('brændstofforbrug i havn 3 til 4 i tank 1', lowBound=0)
+f32 = LpVariable('brændstofforbrug i havn 3 til 3 i tank 2', lowBound=0)
 
 l01 = LpVariable('', lowBound=0)
 l02 = LpVariable('tank_2', lowBound=0)
