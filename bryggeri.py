@@ -62,10 +62,11 @@ problem +=  f11+f12 == F1, 'capacity constraint 6'
 problem +=  f21+f22 == F2, 'capacity constraint 6'
 problem +=  f31+f32 == F3, 'capacity constraint 6'
 
+R1 = (h11+h12)-(f11+f12) >= 1200
+R2 = (h21+h22)-(f21+f22) >= 1800
+R3 = (h31+h32)-(f31+f32) >= 2800
+
 R0=1000
-R1>=1200
-R2>=1800
-R3>=2800
 
 problem +=  h01+h02 => R1+F0, 'capacity constraint 4'
 problem +=  h11+h12 => R2+F1, 'capacity constraint 4'
