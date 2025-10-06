@@ -29,7 +29,7 @@ h31 = LpVariable('Mængden af brændstof i tank 1 ved afgang fra havn 3', lowBou
 h32 = LpVariable('Mængden af brændstof i tank 2 ved afgang fra havn 3', lowBound=0)
 
 #Objective Function
-problem += 600*(x1+)+900*x2+1100*x3+1200*x4 , 'Objective Function'
+problem += 600*(l01+l02)+900*(l11+l12)+1100*(l21+l22)+1200*(l31+l32), 'Objective Function'
 #Constraints
 
 s = [1,2] #tank 
