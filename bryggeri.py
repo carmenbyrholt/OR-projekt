@@ -41,8 +41,8 @@ problem += f22 <= h22, 'capacity constraint 1'
 problem += f31 <= h31, 'capacity constraint 1'
 problem += f32 <= h32, 'capacity constraint 1'
 
-problem +=  h01 = h31+l01-f31, 'capacity constraint 2' # is also constraint no. 3
-problem +=  h02 = h32+l02-f32, 'capacity constraint 2'
+
+
 problem +=  h11 = h01+l11-f01, 'capacity constraint 2'
 problem +=  h12 = h02+l12-f02, 'capacity constraint 2'
 problem +=  h21 = h11+l21-f11, 'capacity constraint 2'
@@ -50,6 +50,21 @@ problem +=  h22 = h12+l22-f12, 'capacity constraint 2'
 problem +=  h31 = h21+l31-f21, 'capacity constraint 2'
 problem +=  h32 = h22+l32-f22, 'capacity constraint 2'
 
+problem +=  h01 = h31+l01-f31, 'capacity constraint 3'
+problem +=  h02 = h32+l02-f32, 'capacity constraint 3'
+
+
+problem +=  hi1+hi2 => R(1+i)+Fi, 'capacity constraint 4'
+problem +=  h01+h02 => R1+F0, 'capacity constraint 4'
+problem +=  h11+h12 => R2+F1, 'capacity constraint 4'
+problem +=  h21+h22 => R3+F2, 'capacity constraint 4'
+
+problem +=  h31+h32 => R0+F3, 'capacity constraint 5'
+
+problem +=  f01+f02 => F0, 'capacity constraint 6'
+problem +=  f11+f12 => F1, 'capacity constraint 6'
+problem +=  f21+f22 => F2, 'capacity constraint 6'
+problem +=  f31+f32 => F3, 'capacity constraint 6'
 
 
 
@@ -86,13 +101,14 @@ def h_is(i)):
 #R(i) Mængden af brændstof, som skal være i reserve, ved ankomst til havn i.
 def R(i):
   if i==0:
-    return 5000
+    return 1000
   elif i==1:
     return 1200
   elif i==2:
     return 1800
   elif i==3:
     return 2800
+
   
 #F(i) Mængden af brændstof, som der er behov for, ved en sejlads fra havn i til havn i+1
 
