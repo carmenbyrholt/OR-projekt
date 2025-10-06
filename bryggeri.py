@@ -31,6 +31,12 @@ h32 = LpVariable('Mængden af brændstof i tank 2 ved afgang fra havn 3', lowBou
 #Objective Function
 problem += 600*(l01+l02)+900*(l11+l12)+1100*(l21+l22)+1200*(l31+l32), 'Objective Function'
 #Constraints
+problem += f_is <= h_is(i), 'capacity constraint 1'
+problem +=  h_is(i) = h_is(i-1)+l_is(i)-(f_is-1), 'capacity constraint 2'
+problem +=  h_is(0) = h_is(3)+l_is(0)-(f_is==3) , 'capacity constraint 3'
+
+
+
 
 s = [1,2] #tank 
 i =[0,1,2,3] #havne
