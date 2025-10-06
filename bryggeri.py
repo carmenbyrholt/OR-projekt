@@ -52,6 +52,11 @@ problem +=  h32 == h22+l32-f22, 'capacity constraint 2'
 problem +=  h01 == h31+l01-f31, 'capacity constraint 3'
 problem +=  h02 == h32+l02-f32, 'capacity constraint 3'
 
+F0 = f01+f02
+F1 = f11+f12
+F2 = f21+f22
+F3 = f31+f32
+
 problem +=  f01+f02 == F0, 'capacity constraint 6'
 problem +=  f11+f12 == F1, 'capacity constraint 6'
 problem +=  f21+f22 == F2, 'capacity constraint 6'
