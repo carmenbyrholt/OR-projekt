@@ -53,18 +53,23 @@ problem +=  h32 = h22+l32-f22, 'capacity constraint 2'
 problem +=  h01 = h31+l01-f31, 'capacity constraint 3'
 problem +=  h02 = h32+l02-f32, 'capacity constraint 3'
 
+problem +=  f01+f02 = F0, 'capacity constraint 6'
+problem +=  f11+f12 = F1, 'capacity constraint 6'
+problem +=  f21+f22 = F2, 'capacity constraint 6'
+problem +=  f31+f32 = F3, 'capacity constraint 6'
 
-problem +=  hi1+hi2 => R(1+i)+Fi, 'capacity constraint 4'
+R0=1000
+R1>=1200
+R2>=1800
+R3>=2800
+
 problem +=  h01+h02 => R1+F0, 'capacity constraint 4'
 problem +=  h11+h12 => R2+F1, 'capacity constraint 4'
 problem +=  h21+h22 => R3+F2, 'capacity constraint 4'
 
 problem +=  h31+h32 => R0+F3, 'capacity constraint 5'
 
-problem +=  f01+f02 => F0, 'capacity constraint 6'
-problem +=  f11+f12 => F1, 'capacity constraint 6'
-problem +=  f21+f22 => F2, 'capacity constraint 6'
-problem +=  f31+f32 => F3, 'capacity constraint 6'
+
 
 
 
