@@ -81,6 +81,40 @@ problem +=  h11+h12 >= R2+F1
 problem +=  h21+h22 >= R3+F2
 problem +=  h31+h32 >= R0+F3
 
+#opgave 14
+problem +=  f01 == f02
+problem +=  f11 == f12
+problem +=  f21 == f22 
+problem +=  f31 == f32
+
+problem +=  h01 == h02
+problem +=  h11 == h12 
+problem +=  h21 == h22 
+problem +=  h31 == h32
+
+problem +=  l01 == l02
+problem +=  l11 == l12 
+problem +=  l21 == l22 
+problem +=  l31 == l32
+
+#opgave 14 pt. 2
+#lighed ved afgang fra hver havn
+
+problem += h01 == h02   # afgang havn 0
+problem += h11 == h12   # afgang havn 1
+problem += h21 == h22   # afgang havn 2
+problem += h31 == h32   # afgang havn 3
+
+#lighed ved ankomst til hver havn
+
+problem += h31 - f31 == h32 - f32 # ankomst til havn 0 (fra 3→0)
+
+problem += h01 - f01 == h02 - f02 # ankomst til havn 1 (fra 0→1)
+
+problem += h11 - f11 == h12 - f12 # ankomst til havn 2 (fra 1→2)
+
+problem += h21 - f21 == h22 - f22 # ankomst til havn 3 (fra 2→3)
+
 
 problem.solve()
 print("Status:", LpStatus[problem.status])
